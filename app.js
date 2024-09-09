@@ -63,7 +63,7 @@ function takeCommand(message) {
         window.open("https://chatgpt.com", "_blank");
         speak("Opening CHATGPT...");        
     } else if (message.includes("call appa")) {
-        const phoneNumber = "+91-8867658988";
+        const phoneNumber = "8867658988";
         window.open(`tel:${phoneNumber}`);
         speak("Calling the appa...");  
     } else if (message.includes('what is') || message.includes('who is') || message.includes('what are')) {
