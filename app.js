@@ -53,6 +53,9 @@ function takeCommand(message) {
     } else if (message.includes("open facebook")) {
         window.open("https://facebook.com", "_blank");
         speak("Opening Facebook...");
+    } else if (message.includes("open instagram")) {
+        window.open("https://www.instagram.com", "_blank");
+        speak("Opening Instagram...");     
     } else if (message.includes('what is') || message.includes('who is') || message.includes('what are')) {
         window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
         const finalText = "This is what I found on the internet regarding " + message;
