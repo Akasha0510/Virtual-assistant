@@ -1,78 +1,150 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto Mono", monospace;
 }
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Full-screen background with animated gradient */
 .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
+    background: linear-gradient(120deg, rgba(0, 123, 255, 0.5), rgba(0, 255, 234, 0.5));
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
     position: relative;
+    z-index: 1;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Overlay to darken the background slightly */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    background: #000;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.image-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-.main .image-container {
-    padding: 10px;
-}
-.main .image-container .image {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.main .image-container .image img {
-    width: 350px;
-    align-items: center;
-}
-
-.main .image-container h1 {
-    color: #00bcd4;
     text-align: center;
-    margin-bottom: 10px;
-    font-size: 40px;
+    color: #fff;
 }
 
-.main .image-container p {
-    color: #324042;
-    text-align: center;
-    margin-bottom: 40px;
+.assistant-image {
+    width: 250px;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
 }
-.main .input {
+
+.assistant-image:hover {
+    transform: scale(1.1);
+}
+
+.title {
+    font-size: 60px;
+    letter-spacing: 8px;
+    color: #00ffff;
+    text-shadow: 2px 2px 10px rgba(0, 255, 255, 0.7);
+    margin-top: 20px;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #b2ffff;
+    margin: 10px 0;
+    text-shadow: 1px 1px 5px rgba(0, 255, 255, 0.7);
+}
+
+/* Speech input button with hover animation at the bottom */
+.input {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40vw;
-    height: 50px;
-    border-radius: 20px;
-    background: rgb(202 253 255 / 50%);
-}
-
-.main .input .talk {
-    background: transparent;
-    outline: none;
-    border: none;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
+    position: absolute;
+    bottom: 50px; /* Places the button 50px from the bottom of the page */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the button horizontally */
+    width: 200px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    box-shadow: 0 8px 15px rgba(0, 255, 255, 0.3);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
-.main .input .talk i {
-    font-size: 20px;
-    color: #aed0d0;
+.input:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
 }
 
-.main .input .content {
+.talk {
+    background: transparent;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00ffff;
+    font-size: 30px;
+}
+
+.talk i {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.content {
+    font-size: 16px;
     color: #aed0d0;
-    font-size: 15px;
-    margin-right: 20px;
+    margin-left: 15px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 40px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .assistant-image {
+        width: 200px;
+    }
+
+    .input {
+        width: 180px;
+        bottom: 30px;
+    }
 }
